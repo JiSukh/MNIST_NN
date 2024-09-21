@@ -2,6 +2,9 @@ import numpy as np
 import data
 from DenseLayer import DenseLayer
 from ActivationReLU import ActivationReLU
+from ActivationSoftMax import ActivationSoftMax
+
+
 
 
 
@@ -19,6 +22,11 @@ activate = ActivationReLU()
 
 activate.forward(layer1.output)
 
+activateSoftMax = ActivationSoftMax()
+
+activateSoftMax.forward(layer1.output)
+
 
 print(f"Outputs: {layer1.output}")
-print(f"Activation: {activate.output}")
+print(f"Activation ReLU: {activate.output}")
+print(f"Activation SoftMax: {activateSoftMax.output}")
