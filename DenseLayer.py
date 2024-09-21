@@ -13,7 +13,7 @@ class DenseLayer:
         x = number of input neurons
         y = number of output neurons.
         """
-        self.weights = np.random.rand(y,x) * 0.01 #Create 2d array with weight per each neuron.
+        self.weights = np.random.rand(x,y) * 0.01 #Create 2d array with weight per each neuron.
         self.biases = np.zeros(y)
         
     def forward(self, inputs):
@@ -21,6 +21,6 @@ class DenseLayer:
         Method for forward prop. for dense layer.
 
         Args:
-            inputs (_type_): _description_
+            inputs (vector): Input vector for this set of neurons. Dataset must be 
         """
-        self.output = np.dot(self.weights, inputs) + self.biases
+        self.output = np.dot(inputs, self.weights) + self.biases
