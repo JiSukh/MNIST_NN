@@ -7,6 +7,7 @@ from Cost import CrossEntropy
 
 
 images, labels = get_data()
+learning_rate = 0.01
 
 epochs = 10
 
@@ -32,4 +33,15 @@ outputSoftMax.forward(hiddenlayer2.output)
 
 CrossE.forward(outputSoftMax.output, labels[0])
 
-print(CrossE.output)
+#Backwards prop
+CrossE.backward(outputSoftMax.output, labels[0])
+
+hiddenlayer2.backward(CrossE.delta_output, learning_rate)
+
+hiddenlayer1ReLU.backward()
+hiddenlayer1.backward(hiddenlayer1ReLU.delta_output, learning_rate)
+
+inputReLU.backward()
+inputlayer.backward(inputReLU.delta_output, learning_rate)
+
+
