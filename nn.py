@@ -15,4 +15,5 @@ nn = NeuralNetwork()
 
 #nn.train(images,labels)
 
-nn.run(input('Input path: '))
+while(True):
+    nn.run(input('Input path: '))
