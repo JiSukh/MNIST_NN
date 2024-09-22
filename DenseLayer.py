@@ -13,7 +13,7 @@ class DenseLayer:
         x = number of input neurons
         y = number of output neurons.
         """
-        self.weights = np.random.rand(x,y) * 0.01 #Create 2d array with weight per each neuron.
+        self.weights = np.random.rand(x,y) * 0.001 #Create 2d array with weight per each neuron.
         self.biases = np.zeros(y)
         
     def forward(self, inputs):
@@ -34,4 +34,5 @@ class DenseLayer:
         self.biases += -learning_rate * np.clip(delta_outputs,-1,1)
         
         self.delta_output = np.dot(delta_outputs, self.weights.T)
+        
         

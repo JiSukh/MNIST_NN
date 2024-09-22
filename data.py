@@ -1,4 +1,5 @@
 import numpy as np
+import cv2
 
 def get_data():
     with np.load('mnist.npz') as f:
