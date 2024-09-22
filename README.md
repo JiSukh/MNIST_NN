@@ -5,9 +5,12 @@ This is a simple neural network created to work with the MNIST dataset. Not many
 
 ## Overview
 
-This project demonstrates a basic neural network designed for digit classification on the MNIST dataset. The project uses nothing but **numpy** for the neural network. To save the network, pickle in a kinda hacky way but the functionality is all there.
+This project demonstrates a basic neural network designed for digit classification on the MNIST dataset. 
 
-Additionally, openCV is used only to rescale and prepare new image data before it gets inputted into the network.
+The project uses nothing but **numpy** for the neural network. 
+
+To save the network, pickle in a kinda hacky way but the functionality is all there.
+Lastly, openCV is used only to rescale and prepare new image data before it gets inputted into the network.
 
 ## Methodologies
 - Basic implementation of dense layers
