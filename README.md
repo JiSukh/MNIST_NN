@@ -1,6 +1,6 @@
 # Simple Neural Network for MNIST Dataset
 
-This is a simple neural network created to work with the MNIST dataset. Not many advanced things but most concepts of deep learning is here.
+This is a simple neural network created to work with the MNIST dataset with **no deep-learning libraries like tensorflow or pytorch.**
 
 
 ## Overview
