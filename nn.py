@@ -1,54 +1,35 @@
 import numpy as np
-import data
+from data import get_data
 from DenseLayer import DenseLayer
 from ActivationReLU import ActivationReLU
 from ActivationSoftMax import ActivationSoftMax
 from Cost import CrossEntropy
 
 
+images, labels = get_data()
 
+epochs = 10
 
-learning_rate = 0.01
+#create new neural network
 
-inputs = [.2,.5]
+inputlayer = DenseLayer(784,12)
+hiddenlayer1 = DenseLayer(12,12)
+hiddenlayer2 = DenseLayer(12,10)
+inputReLU = ActivationReLU()
+hiddenlayer1ReLU = ActivationReLU()
+outputSoftMax = ActivationSoftMax()
+CrossE = CrossEntropy()
 
-ytrue = [1,0,0]
+#forward pass
+inputlayer.forward(images[0])
+inputReLU.forward(inputlayer.output)
 
-ypred_testing = [0.8,0.29,0.1]
+hiddenlayer1.forward(inputReLU.output)
+hiddenlayer1ReLU.forward(hiddenlayer1.output)
 
+hiddenlayer2.forward(hiddenlayer1ReLU.output)
+outputSoftMax.forward(hiddenlayer2.output)
 
+CrossE.forward(outputSoftMax.output, labels[0])
 
-
-
-layer1 = DenseLayer(2,3)
-
-layer1.forward(inputs)
-
-
-print(f"Weight initial: {layer1.weights}")
-
-activate = ActivationReLU()
-
-activate.forward(layer1.output)
-
-activateSoftMax = ActivationSoftMax()
-
-activateSoftMax.forward(layer1.output)
-
-crossEntropy = CrossEntropy()
-
-ypred = activateSoftMax.output
-
-crossEntropy.forward(ypred_testing, ytrue)
-
-crossEntropy.backward(ypred_testing,ytrue)
-
-layer1.backward(crossEntropy.delta_output, learning_rate)
-
-#print(f"Outputs: {layer1.output}")
-#print(f"Activation ReLU: {activate.output}")
-#print(f"Activation SoftMax: {activateSoftMax.output}")
-
-#print(f"Loss: {crossEntropy.output}")
-print(f"Back prop: {crossEntropy.delta_output}")
-print(f"Weight after backprop: {layer1.weights}")
+print(CrossE.output)
