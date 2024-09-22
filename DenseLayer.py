@@ -30,5 +30,8 @@ class DenseLayer:
     def backward(self, delta_outputs, learning_rate):
         """Backwards prop. for dense layer
         """
-        self.weights = -learning_rate * np.outer(self.inputs, delta_outputs)
-        self.biases = -learning_rate * delta_outputs
+        self.weights += -learning_rate * np.clip(np.outer(self.inputs, delta_outputs),-1,1)
+        self.biases += -learning_rate * np.clip(delta_outputs,-1,1)
+        
+        self.delta_output = np.dot(delta_outputs, self.weights.T)
+        

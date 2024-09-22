@@ -17,6 +17,6 @@ class ActivationReLU:
         """
         self.output = inputs * (inputs > 0)
         
-    def backward(self):
-        self.delta_output = 1 * (self.output > 0)
+    def backward(self, delta_output):
+        self.delta_output = delta_output * (self.output > 0)
     
