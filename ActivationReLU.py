@@ -16,4 +16,7 @@ class ActivationReLU:
             inputs (vectors): Vector to apply ReLU
         """
         self.output = inputs * (inputs > 0)
+        
+    def backward(self):
+        self.delta_output = 1 * (self.output > 0)
     
